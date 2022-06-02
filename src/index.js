@@ -8,7 +8,7 @@ import {BrowserRouter as Router,
         Switch, 
         Redirect} from "react-router-dom"
 
-import {Posts, Navbar, Register, Login} from './components';
+import {Posts, Navbar, Register, Login, Newposts} from './components';
 
 const App = ()=> {
 const [allPosts, setAllPosts] = useState([]);
@@ -38,7 +38,7 @@ useEffect (()=>{
       <h1>Stranger's Things</h1>
       <Navbar />
       <Switch>
-      <Route exact path="/posts"><Posts allPosts= {allPosts} /></Route>
+      <Route exact path="/posts"><Posts allPosts= {allPosts} /><Newposts/></Route>
       <Route path="/register"><Register/></Route>
       <Route path="/login"><Login/></Route>
       </Switch>

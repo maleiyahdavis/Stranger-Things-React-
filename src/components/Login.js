@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { loginUser } from '../api';
-import { storeToken } from '../auth';
+import { storeToken, storeUser } from '../auth';
 
 function Login({setIsLoggedIn}) {
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ function Login({setIsLoggedIn}) {
           try {
             const {data} = await loginUser(username, password)
             storeToken(token)
-            setIsLoggedIn(true); 
+            storeUser(username);
 
             setUsername("");
             setPassword("");

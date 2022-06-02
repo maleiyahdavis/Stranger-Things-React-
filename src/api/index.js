@@ -31,6 +31,21 @@ export async function loginUser(username, password){
     });
     return data; 
   }catch(error){
-    throw error;
-  }
+    throw error; 
+  }}
+  export async function createPost (title, description, user, token){
+    try{
+      const {data} = await axios.post(`${BASE_URL}/posts`, {
+      title: title,
+      description: description,
+      author: user
+      },{
+        headers: {
+          "auth-token" : token
+        }
+      });
+      return data; 
+    }catch(error){
+      throw error;
+    }
 }
