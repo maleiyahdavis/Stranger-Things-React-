@@ -13,7 +13,7 @@ function Login({setIsLoggedIn}) {
         onSubmit={async (event)=>{
           event.preventDefault();
           try {
-            const {data} = await loginUser(username, password)
+            const {data:{token}} = await loginUser(username, password)
             storeToken(token)
             storeUser(username);
 

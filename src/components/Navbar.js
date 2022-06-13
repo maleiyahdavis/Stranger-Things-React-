@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom';
-import {Link} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
 
 function Navbar(props) {
   return (

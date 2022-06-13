@@ -13,7 +13,7 @@ function Register({setIsLoggedIn}) {
         onSubmit={async (event)=>{
           event.preventDefault();
           try {
-            const {data} = await registerUser(username, password)
+            const { data } = await registerUser(username, password)
             storeToken(token)
             storeUser(username);
 

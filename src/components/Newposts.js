@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {createPost} from '../api';
 import {getToken, getUser} from "../auth"; 
 
-const Newposts = (props) =>{
+const Newposts = ({setAllPosts, allPosts}) =>{
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     return (
@@ -13,9 +13,10 @@ const Newposts = (props) =>{
                 event.preventDefault();
                 try {
                     const token = getToken();
-                    const user= getUser;
+                    const user = getUser();
 
-                    const createdPost= await createPost(title, description, user, token)
+                    const createPost= await createPost(title, description, user, token)
+                    setAllPosts([createPost, ...allPosts])
                 } catch (err) {
                     console.log(error)
                 }
