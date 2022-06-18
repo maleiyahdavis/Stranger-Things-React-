@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { loginUser } from '../api';
 import { storeToken, storeUser } from '../auth';
 
+
 function Login({setIsLoggedIn}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,9 +14,11 @@ function Login({setIsLoggedIn}) {
         onSubmit={async (event)=>{
           event.preventDefault();
           try {
-            const {data:{token}} = await loginUser(username, password)
-            storeToken(token)
+            const { data } = await loginUser(username, password)
+            storeToken(data.token);
             storeUser(username);
+
+            setIsLoggedIn(true); 
 
             setUsername("");
             setPassword("");

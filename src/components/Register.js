@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {registerUser} from '../api'; 
-import {storeToken} from "../auth"; 
+import {storeToken, storeUser} from "../auth"; 
 
 function Register({setIsLoggedIn}) {
   const [username, setUsername] = useState("");
@@ -14,9 +14,10 @@ function Register({setIsLoggedIn}) {
           event.preventDefault();
           try {
             const { data } = await registerUser(username, password)
-            storeToken(token)
+            storeToken(data.token)
             storeUser(username);
 
+            setIsLoggedIn(true);
 
             setUsername("");
             setPassword("");
